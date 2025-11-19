@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Failure Simulator - Product Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🛒 Product Catalog</h1>
+            <p class="subtitle">Network Failure Simulation Demo</p>
+        </header>
+
+        <!-- Failure Toggle Control Panel -->
+        <div class="control-panel">
+            <div class="toggle-section">
+                <label class="toggle-label">
+                    <input type="checkbox" id="failureToggle" class="toggle-checkbox">
+                    <span class="toggle-text">Failure Toggle (ON = inject network failure)</span>
+                </label>
+            </div>
+            
+            <div class="failure-type-section" id="failureTypeSection">
+                <p class="section-label">Select Failure Type:</p>
+                <label class="radio-label">
+                    <input type="radio" name="failureType" value="timeout" checked>
+                    <span>Timeout (3s delay)</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="failureType" value="503">
+                    <span>503 Service Unavailable</span>
+                </label>
+            </div>
+
+            <button id="fetchBtn" class="fetch-btn">Fetch Products</button>
+        </div>
+
+        <!-- Error Banner (hidden by default) -->
+        <div id="errorBanner" class="error-banner hidden">
+            <div class="error-content">
+                <span class="error-icon">⚠️</span>
+                <div>
+                    <p class="error-title">System Failure Detected</p>
+                    <p class="error-message" id="errorMessage"></p>
+                    <p class="error-advice">Try again later or contact support if the issue persists.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p>Loading products...</p>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productsGrid" class="products-grid"></div>
+
+        <!-- Log Display Panel -->
+        <div class="log-panel">
+            <h3>Last Request Log:</h3>
+            <pre id="logDisplay" class="log-display">No logs yet. Click "Fetch Products" to generate logs.</pre>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>📋 How to Use:</h3>
+            <ol>
+                <li><strong>Happy Path:</strong> Keep toggle OFF and click "Fetch Products" to see normal operation</li>
+                <li><strong>Inject Failure:</strong> Turn toggle ON, select failure type, then click "Fetch Products"</li>
+                <li><strong>View Logs:</strong> Check browser console (F12) for structured JSON logs</li>
+            </ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
